@@ -1,3 +1,10 @@
+<marvel-loading-spinner></marvel-loading-spinner>
+
+<div class="fixed right-0 top-0 z-50 flex flex-col items-center justify-start p-4">
+  <marvel-toast *ngFor="let toast of toasts$ | async" [type]="toast.type" [title]="toast.title"
+    [message]="toast.message"></marvel-toast>
+</div>
+
 <marvel-nav-bar class="flex-initial" />
 
 <main class="flex h-full w-full flex-1 items-center justify-center p-1 sm:p-1 md:p-2 lg:p-3 xl:p-5">
