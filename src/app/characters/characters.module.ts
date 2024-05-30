@@ -1,17 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
 import { CharactersRoutingModule } from './characters-routing.module';
-import { CharactersComponent } from './characters.component';
-import { booksFeature } from './reducers/characters-api.reducer';
+import { CharacterCardComponent } from './components/character-card/character-card.component';
+import { CharactersListShellComponent } from './containers/characters-list-shell/characters-list-shell.component';
+import { charactersFeatureState, charactersReducers } from './state/characters-index';
+import { CharactersEffects } from './state/effects/characters.effects';
 
 @NgModule({
-  declarations: [CharactersComponent],
+  declarations: [
+    CharacterCardComponent,
+    CharactersListShellComponent
+  ],
   imports: [
     CommonModule,
     CharactersRoutingModule,
-    StoreModule.forFeature(booksFeature),
+    StoreModule.forFeature(charactersFeatureState, charactersReducers),
+    EffectsModule.forFeature([CharactersEffects])
   ],
 })
 export class CharactersModule {}

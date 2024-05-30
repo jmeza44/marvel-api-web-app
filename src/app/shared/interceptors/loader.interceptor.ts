@@ -19,13 +19,11 @@ export class LoaderInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('push request');
     this.requests.push(req);
     this.loaderService.isLoading.next(true);
 
     return next.handle(req).pipe(
       finalize(() => {
-        console.log('remove request');
         this.removeRequest(req);
       })
     );

@@ -1,12 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { exhaustMap, map, catchError, of, tap } from 'rxjs';
-import { NotifierService } from '../../shared/services/core/notifier.service';
-import { CharactersService } from '../../shared/services/marvel-api/characters.service';
+import { map, catchError, of, tap, switchMap } from 'rxjs';
+import { NotifierService } from '../../../shared/services/core/notifier.service';
+import { CharactersService } from '../../../shared/services/marvel-api/characters.service';
 import { charactersApiActions } from '../actions/characters-api.actions';
-
-
 
 @Injectable()
 export class CharactersEffects {
@@ -19,7 +17,7 @@ export class CharactersEffects {
   loadCharacters$ = createEffect(() =>
     this.actions$.pipe(
       ofType(charactersApiActions.charactersLoad),
-      exhaustMap(() =>
+      switchMap(({_p}) =>
         this.charactersService.getCharacters().pipe(
           map((characters) =>
             charactersApiActions.charactersLoadedSuccess({
@@ -32,7 +30,7 @@ export class CharactersEffects {
     ),
   );
 
-  loadCharactersFailure = createEffect(() =>
+  loadCharactersFailure$ = createEffect(() =>
     this.actions$.pipe(
       ofType(charactersApiActions.charactersLoadedFailure),
       tap(() => this.notifier.loadDataError('Characters')),

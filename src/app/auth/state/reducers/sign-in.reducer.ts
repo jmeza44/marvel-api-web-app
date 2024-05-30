@@ -11,7 +11,7 @@ export const signInReducer = createReducer(
   on(authActions.signInActions.signIn, () => ({ access_token: '' })),
   on(
     authActions.signInActions.signInSuccess,
-    (_state, action) => action.authResponse,
+    (_state, { authResponse }) => authResponse,
   ),
   on(authActions.signInActions.signInFailure, () => ({ access_token: '' })),
   on(authActions.signOutActions.signOut, () => ({ access_token: '' })),

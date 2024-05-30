@@ -160,4 +160,10 @@ export class AuthEffects {
       ),
     { dispatch: false },
   );
+
+  signOut$ = createEffect(() => this.actions$.pipe(
+    ofType(authActions.signOutActions.signOut),
+    tap(() => this.router.navigate([""]))),
+    { dispatch: false }
+  );
 }
