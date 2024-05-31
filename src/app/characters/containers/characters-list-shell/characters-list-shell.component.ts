@@ -13,6 +13,7 @@ import { UserProfile } from '../../../shared/models/auth/user-profile.model';
 export class CharactersListShellComponent {
   characters$!: Observable<Character[]>;
   userProfile$!: Observable<UserProfile>;
+  selectedCharacter: Character | null = null;
 
   constructor(private charactersStore: Store<CharactersState>) {
     this.characters$ = this.charactersStore.pipe(select(charactersSelectors.getCharacters));
@@ -20,5 +21,9 @@ export class CharactersListShellComponent {
 
   ngOnInit() {
     this.charactersStore.dispatch(charactersApiActions.charactersLoad());
+  }
+
+  updateSelectedCharacter($event: Character | null) {
+    this.selectedCharacter = $event;
   }
 }

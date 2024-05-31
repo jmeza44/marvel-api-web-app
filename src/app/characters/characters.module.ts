@@ -9,11 +9,13 @@ import { CharacterCardComponent } from './components/character-card/character-ca
 import { CharactersListShellComponent } from './containers/characters-list-shell/characters-list-shell.component';
 import { charactersFeatureState, charactersReducers } from './state/characters-index';
 import { CharactersEffects } from './state/effects/characters.effects';
+import { CharacterDetailsModalComponent } from './components/character-details-modal/character-details-modal.component';
 
 @NgModule({
   declarations: [
     CharacterCardComponent,
-    CharactersListShellComponent
+    CharactersListShellComponent,
+    CharacterDetailsModalComponent
   ],
   imports: [
     CommonModule,

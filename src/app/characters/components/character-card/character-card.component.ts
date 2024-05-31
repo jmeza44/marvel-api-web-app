@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Character } from '../../../shared/models/marvel-api/core/marvel-api-character.model';
 
 @Component({
@@ -8,4 +8,9 @@ import { Character } from '../../../shared/models/marvel-api/core/marvel-api-cha
 })
 export class CharacterCardComponent {
   @Input() character!: Character;
+  @Output() characterDetailsClicked: EventEmitter<Character> = new EventEmitter<Character>();
+
+  emitCharacter() {
+    this.characterDetailsClicked.emit(this.character);
+  }
 }
