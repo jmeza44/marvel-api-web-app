@@ -9,10 +9,11 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { PaginatorComponent } from '../shared/components/paginator/paginator.component';
 
 
 @NgModule({
-  declarations: [NavBarComponent, FooterComponent, ToastComponent, HomePageComponent, LoadingSpinnerComponent],
+  declarations: [NavBarComponent, FooterComponent, ToastComponent, HomePageComponent, LoadingSpinnerComponent, PaginatorComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -28,6 +29,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     FooterComponent,
     ToastComponent,
     LoadingSpinnerComponent,
+    PaginatorComponent,
   ],
 })
 export class SharedModule {}
