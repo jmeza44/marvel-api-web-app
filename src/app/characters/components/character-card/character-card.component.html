@@ -1,7 +1,8 @@
 <div
   class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-full flex flex-col">
   <a target="_blank" [href]="character.urls?.[0]?.url || '#'" class="flex-initial h-60">
-    <img *ngIf="character.thumbnail" [src]="character.thumbnail.path + '.' + character.thumbnail.extension"
+    <img *ngIf="character.thumbnail" [defaultImage]="'../../../../assets/images/placeholder.png'"
+      [lazyLoad]="character.thumbnail.path + '.' + character.thumbnail.extension"
       class="rounded-t-lg w-full h-60 object-cover" [alt]="'Character ' + character.name + ' Image'" />
   </a>
   <div class="p-5 flex-grow flex flex-col justify-between">
@@ -12,7 +13,8 @@
       || 'No description available' }}</p>
     <div class="flex justify-self-end items-center justify-between">
       <!-- Add rating starts -->
-      <star-rating style="display: inline-block; width: fit-content;" [starType]="'svg'" [rating]="2.63"></star-rating>
+      <star-rating style="display: inline-block; width: fit-content;" [starType]="'svg'"
+        [rating]="(rating?.totalRating ?? 0) / 10"></star-rating>
       <button
         class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">

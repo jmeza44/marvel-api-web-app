@@ -3,13 +3,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { ToastComponent } from './components/toast/toast.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
-import { PaginatorComponent } from '../shared/components/paginator/paginator.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+import { ToastComponent } from './components/toast/toast.component';
+
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import { PaginatorComponent } from '../shared/components/paginator/paginator.com
     CommonModule,
     RouterModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LazyLoadImageModule,
   ],
   exports: [
     CommonModule,
@@ -30,6 +33,7 @@ import { PaginatorComponent } from '../shared/components/paginator/paginator.com
     ToastComponent,
     LoadingSpinnerComponent,
     PaginatorComponent,
+    LazyLoadImageModule
   ],
 })
 export class SharedModule {}

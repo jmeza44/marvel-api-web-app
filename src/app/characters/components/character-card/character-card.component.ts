@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Character } from '../../../shared/models/marvel-api/core/marvel-api-character.model';
+import { ResourceRating } from '../../../shared/models/application/resource-rating.model';
 
 @Component({
   selector: 'marvel-character-card',
@@ -8,4 +9,5 @@ import { Character } from '../../../shared/models/marvel-api/core/marvel-api-cha
 })
 export class CharacterCardComponent {
   @Input() character!: Character;
+  @Input() rating: ResourceRating | undefined;
 }

@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const access_token = this.localStorageService.getItem('access_token') as string;
+    const access_token = this.localStorageService.getAccessToken() as string;
     if (access_token !== undefined && access_token !== null && access_token !== '') this.authStore.dispatch(authActions.signInActions.signInSuccess({ authResponse: { access_token } }));
     initFlowbite();
   }
