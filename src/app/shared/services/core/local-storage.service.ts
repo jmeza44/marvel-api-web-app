@@ -4,7 +4,22 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class LocalStorageService {
+  private accessTokenKey: string = "access_token";
+
   constructor() {}
+
+  addAccessToken(accessToken: string): void {
+    localStorage.setItem(this.accessTokenKey, JSON.stringify(accessToken));
+  }
+
+  getAccessToken(): any {
+    const item = localStorage.getItem(this.accessTokenKey);
+    return item ? JSON.parse(item) : null;
+  }
+
+  removeAccessToken(): void {
+    localStorage.removeItem(this.accessTokenKey);
+  }
 
   addItem(key: string, value: any): void {
     localStorage.setItem(key, JSON.stringify(value));

@@ -22,7 +22,7 @@ export class SignOutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.localStorageService.removeItem('access_token');
+    this.localStorageService.removeAccessToken();
     this.authStore.dispatch(authActions.signOutActions.signOut());
   }
 

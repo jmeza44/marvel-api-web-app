@@ -37,8 +37,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(authActions.signInActions.signInSuccess),
       switchMap(({ authResponse }) => {
-        this.localStorageService.addItem(
-          'access_token',
+        this.localStorageService.addAccessToken(
           authResponse.access_token,
         );
         return this.authenticationService.loadProfile().pipe(
